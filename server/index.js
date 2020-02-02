@@ -29,6 +29,7 @@ app.post("/api/messages", (req, res) => {
   });
 });
 
-app.listen(3001, () =>
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () =>
   console.log("Express server is running on localhost:3001")
 );
