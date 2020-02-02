@@ -50,7 +50,7 @@ class ContactInfoView extends React.Component {
     this.setState({ isModalOpen: false });
     if (otp) {
       this.saveMessageSent(otp);
-      axios.post(`http://localhost:3001/api/messages`, { otp }).then(res => {
+      axios.post(`/api/messages`, { otp }).then(res => {
         console.log(res);
         if (res.data.status === 200) {
           this.setState({
