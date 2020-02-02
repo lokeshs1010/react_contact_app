@@ -1,9 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const pino = require("express-pino-logger")();
-const SendOtp = require('sendotp');
-const sendOtp = new SendOtp('264037ATV7kXc15c6e2d35');
 const cors = require('cors')
+const SendOtp = require('sendotp');
+
+const sendOtp = new SendOtp('264037ATV7kXc15c6e2d35');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
