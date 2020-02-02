@@ -1,5 +1,6 @@
 import React from "react";
 import { Paper, withStyles } from "@material-ui/core";
+import { withRouter } from "react-router";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -8,16 +9,20 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { withRouter } from "react-router";
+import axios from "axios";
 
 import { useStyles } from "./styles";
 import { generateFakeContactData } from "../contact-list/contacts";
 import { NewMessage } from "./NewMessage";
+import { Snackbars } from "../common/Alert";
 
 class ContactInfoView extends React.Component {
   state = {
     user: null,
-    isModalOpen: false
+    isModalOpen: false,
+    openAlert: false,
+    type: "success",
+    message: ""
   };
 
   componentDidMount() {
@@ -45,8 +50,35 @@ class ContactInfoView extends React.Component {
     this.setState({ isModalOpen: false });
     if (otp) {
       this.saveMessageSent(otp);
-      this.props.history.push("/message-sent-list");
+      axios.post(`http://localhost:3001/api/messages`, { otp }).then(res => {
+        console.log(res);
+        if (res.data.status === 200) {
+          this.setState({
+            type: "success",
+            openAlert: true,
+            message: 'Message sent successfully'
+          });
+          setTimeout(() => {
+            this.props.history.push("/message-sent-list");
+         }, 2000);
+          
+        } else {
+          this.setState({
+            type: "error",
+            openAlert: true,
+            message: res.data.message
+          });
+        }
+      });
     }
+  };
+
+  handleAlertClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    this.setState({ openAlert: false });
   };
 
   saveMessageSent = otp => {
@@ -68,7 +100,7 @@ class ContactInfoView extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { user, isModalOpen } = this.state;
+    const { user, isModalOpen, openAlert, type, message } = this.state;
 
     if (!user) {
       return (
@@ -113,6 +145,12 @@ class ContactInfoView extends React.Component {
           </Card>
         </Paper>
         <NewMessage open={isModalOpen} handleClose={this.handleClose} />
+        <Snackbars
+          open={openAlert}
+          type={type}
+          message={message}
+          handleClose={this.handleAlertClose}
+        />
       </>
     );
   }
