@@ -1,5 +1,6 @@
 import React from 'react';
-import ListIcon from '@material-ui/icons/List';
+import MessageIcon from '@material-ui/icons/Message';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 
 import { RedirectPage } from './redirect-page';
 import { ContactInfo } from "../features/contact-info/ContactInfo";
@@ -17,14 +18,14 @@ export const routes = [
     component: ContactList,
     exact: true,
     title: 'Contact List',
-    icon: <ListIcon />
+    icon: <ContactPhoneIcon />
   },
   {
     path: "/message-sent-list",
     component: MessageSentList,
     exact: true,
     title: 'Message Sent List',
-    icon: <ListIcon />
+    icon: <MessageIcon />
   },
   {
     path: "/contact-info/:id",
