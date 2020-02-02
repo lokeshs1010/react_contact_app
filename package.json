@@ -20,12 +20,14 @@
     "typeface-roboto": "0.0.75"
   },
   "scripts": {
+    "client-install": "npm install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon server | pino-colada",
-    "dev": "run-p server start"
+    "dev": "run-p server start",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
   "proxy": "http://localhost:3001",
   "eslintConfig": {
