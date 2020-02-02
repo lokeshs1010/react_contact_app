@@ -3,6 +3,7 @@
 export const useStyles = {
   card: {
     maxWidth: 345,
+    width: '100%',
     height: 'fit-content'
   },
   media: {

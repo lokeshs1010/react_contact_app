@@ -62,7 +62,7 @@ export const NewMessage = ({ handleClose, open }) => {
           Send Message
         </DialogTitle>
         <DialogContent dividers className={classes.content}>
-          <Typography gutterBottom>Hi, Your Otp is {randomNumber}</Typography>
+          <Typography gutterBottom>Your Otp is {randomNumber}. Please do not share it with anybody</Typography>
           <Tooltip title="Refresh token">
             <IconButton
               aria-label="refresh"

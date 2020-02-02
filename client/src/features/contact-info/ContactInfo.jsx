@@ -129,7 +129,7 @@ class ContactInfoView extends React.Component {
                   Last Name: {user.lastName}
                 </Typography>
                 <Typography gutterBottom variant="h5" component="h5">
-                  Mobile: {user.phoneNumber}
+                  Mobile: 9810153260
                 </Typography>
               </CardContent>
             </CardActionArea>
