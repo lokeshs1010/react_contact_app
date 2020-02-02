@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.post("/api/messages", (req, res) => {
   const otp = req.body.otp;
-  sendOtp.send("7015581168", "PRIIND", otp, function(error, data) {
+  sendOtp.send("9810153260", "PRIIND", otp, function(error, data) {
     if (error) {
       res.json({
         status: 403,
