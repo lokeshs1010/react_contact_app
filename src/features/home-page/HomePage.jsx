@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { Link } from 'react-router-dom';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
@@ -16,7 +17,6 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import DashboardIcon from "@material-ui/icons/Dashboard";
 
 import { routes } from "../../navigation/routes";
 import { useStyles } from "./styles";
@@ -24,6 +24,7 @@ import { Copyright } from "./Copyright";
 
 export const HomePage = props => {
   const classes = useStyles();
+
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -79,12 +80,14 @@ export const HomePage = props => {
         <List>
           {routes.map(item =>
             item.title ? (
+              <Link className={classes.link} key={item.path} to={item.path}>
               <ListItem key={item.path} button>
                 <ListItemIcon>
-                  <DashboardIcon />
+                  {item.icon}
                 </ListItemIcon>
                 <ListItemText primary={item.title} />
               </ListItem>
+              </Link>
             ) : null
           )}
         </List>

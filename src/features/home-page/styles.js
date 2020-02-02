@@ -79,4 +79,8 @@ export const useStyles = makeStyles(theme => ({
   fixedHeight: {
     height: 240,
   },
+  link: {
+    color: theme.palette.text.primary,
+    textDecoration: 'none',
+  },
 }));

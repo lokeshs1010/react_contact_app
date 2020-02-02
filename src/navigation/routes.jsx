@@ -1,9 +1,10 @@
+import React from 'react';
+import ListIcon from '@material-ui/icons/List';
+
 import { RedirectPage } from './redirect-page';
 import { ContactInfo } from "../features/contact-info/ContactInfo";
 import { ContactList } from "../features/contact-list/ContactList";
-import { CreateContact } from "../features/create-contact/CreateContact";
 import { MessageSentList } from "../features/message-sent-list/MessageSentList";
-import { NewMessage } from "../features/new-message/NewMessage";
 
 export const routes = [
   {
@@ -15,30 +16,19 @@ export const routes = [
     path: "/contact-list",
     component: ContactList,
     exact: true,
-    title: 'Contact List'
-  },
-  {
-    path: "/create-contact",
-    component: CreateContact,
-    exact: true,
-    title: 'Create Contact'
+    title: 'Contact List',
+    icon: <ListIcon />
   },
   {
     path: "/message-sent-list",
     component: MessageSentList,
     exact: true,
-    title: 'Message Sent List'
+    title: 'Message Sent List',
+    icon: <ListIcon />
   },
   {
     path: "/contact-info/:id",
     component: ContactInfo,
-    exact: true,
-    title: 'Contact Info'
+    exact: true
   },
-  {
-    path: "/new-message/:id",
-    component: NewMessage,
-    exact: true,
-    title: 'New Message'
-  }
 ];
