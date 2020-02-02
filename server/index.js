@@ -1,15 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const pino = require("express-pino-logger")();
 const cors = require('cors')
 const SendOtp = require('sendotp');
+const morgan = require("morgan");
 
 const sendOtp = new SendOtp('264037ATV7kXc15c6e2d35');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(pino);
+app.use(morgan("tiny"));
 app.use(cors())
 
 app.post("/api/messages", (req, res) => {
